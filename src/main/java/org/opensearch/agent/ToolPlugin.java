@@ -10,6 +10,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.function.Supplier;
 
+import org.opensearch.agent.tools.GetCreateMonitorParametersTool;
 import org.opensearch.agent.tools.NeuralSparseSearchTool;
 import org.opensearch.agent.tools.PPLTool;
 import org.opensearch.agent.tools.RAGTool;
@@ -72,6 +73,7 @@ public class ToolPlugin extends Plugin implements MLCommonsExtension {
         SearchAnomalyDetectorsTool.Factory.getInstance().init(client, namedWriteableRegistry);
         SearchAnomalyResultsTool.Factory.getInstance().init(client, namedWriteableRegistry);
         SearchMonitorsTool.Factory.getInstance().init(client);
+        GetCreateMonitorParametersTool.Factory.getInstance().init(client);
         return Collections.emptyList();
     }
 
@@ -88,7 +90,8 @@ public class ToolPlugin extends Plugin implements MLCommonsExtension {
                 SearchAlertsTool.Factory.getInstance(),
                 SearchAnomalyDetectorsTool.Factory.getInstance(),
                 SearchAnomalyResultsTool.Factory.getInstance(),
-                SearchMonitorsTool.Factory.getInstance()
+                SearchMonitorsTool.Factory.getInstance(),
+                GetCreateMonitorParametersTool.Factory.getInstance()
             );
     }
 }
